@@ -1,20 +1,5 @@
-import { ListNode, reverseList } from "./206_reverse-linked-list";
-
-function createLinkedList(array) {
-  if (!array.length) return null;
-
-  const head = { val: array[0], next: null };
-  let tail = head;
-
-  for (let i = 1; i < array.length; i++) {
-    const node = { val: array[i], next: null };
-
-    tail.next = node;
-    tail = node;
-  }
-
-  return head;
-}
+import { createLinkedList } from "../data_structures/linked_list";
+import { reverseList } from "./206_reverse-linked-list";
 
 test.each([
   [createLinkedList([1, 2, 3, 4, 5]), createLinkedList([5, 4, 3, 2, 1])],
