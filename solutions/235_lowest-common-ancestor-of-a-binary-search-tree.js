@@ -5,7 +5,7 @@
  */
 /*
  * Time Complexity: O(logN) where N is the number of the nodes in the tree
- * Space Complexity: O(h) where h i the height of the tree
+ * Space Complexity: O(1)
  */
 
 // @lc code=start
@@ -24,23 +24,14 @@
  * @return {TreeNode}
  */
 var lowestCommonAncestor = function (root, p, q) {
-  const small = p.val < q.val ? p : q;
-  const big = p.val < q.val ? q : p;
-
-  if (
-    (small.val < root.val && big.val > root.val) ||
-    small.val === root.val ||
-    big.val === root.val
-  ) {
-    return root;
-  }
-
-  if (small.val < root.val && big.val < root.val) {
-    return lowestCommonAncestor(root.left, p, q);
-  }
-
-  if (small.val > root.val && big.val > root.val) {
-    return lowestCommonAncestor(root.right, p, q);
+  while (root) {
+    if (root.val > p.val && root.val > q.val) {
+      root = root.left;
+    } else if (root.val < p.val && root.val < q.val) {
+      root = root.right;
+    } else {
+      return root;
+    }
   }
 };
 // @lc code=end
