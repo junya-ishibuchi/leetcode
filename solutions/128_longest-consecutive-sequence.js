@@ -17,36 +17,17 @@
 var longestConsecutive = function (nums) {
   if (nums.length === 0) return 0;
 
-  const map = new Map();
   let result = 1;
-  for (const num of nums) {
-    map.set(num, false);
-  }
+  const set = new Set(nums);
 
   for (const num of nums) {
-    let leftNum = num - 1;
-    let rightNum = num + 1;
-    let leftPath = 0;
-    let rightPath = 0;
+    if (set.has(num - 1)) continue;
 
-    if (map.get(leftNum) || map.get(rightNum)) {
-      continue;
+    let length = 1;
+    while (set.has(num + length)) {
+      length++;
     }
-
-    while (map.has(leftNum)) {
-      map.set(leftNum, true);
-      leftPath++;
-      leftNum--;
-    }
-    while (map.has(rightNum)) {
-      map.set(rightNum, true);
-      rightPath++;
-      rightNum++;
-    }
-    const longestPathInThisCase = leftPath + rightPath + 1;
-    if (longestPathInThisCase > result) {
-      result = longestPathInThisCase;
-    }
+    result = Math.max(result, length);
   }
 
   return result;
