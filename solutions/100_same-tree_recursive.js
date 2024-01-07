@@ -4,8 +4,8 @@
  * [100] Same Tree
  */
 /*
- * Time Complexity: O(p + q) where p and q are the number of the node in the tree
- * Space Complexity: O(w) where w is the maximum width of the tree
+ * Time Complexity: O(n) where n is the number of nodes in the larger of the two nodes
+ * Space Complexity: O(h) where h is the height of the tree
  */
 
 // @lc code=start
