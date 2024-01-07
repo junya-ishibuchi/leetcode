@@ -61,7 +61,8 @@ var maxDepth_BFS = function (root) {
   let depth = 0;
 
   while (queue.length) {
-    for (let i = 0; i < queue.length; i++) {
+    const queueLength = queue.length;
+    for (let i = 0; i < queueLength; i++) {
       const node = queue.shift();
       if (node.left) {
         queue.push(node.left);

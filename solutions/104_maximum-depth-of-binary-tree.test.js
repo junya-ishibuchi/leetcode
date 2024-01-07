@@ -7,6 +7,7 @@ import {
 
 test.each([
   [createBinaryTree([3, 9, 20, null, null, 15, 7]), 3],
+  [createBinaryTree([0, 2, 4, 1, null, 3, -1, 5, 1, null, 6, null, 8]), 4],
   [createBinaryTree([3, 9, 20]), 2],
   [createBinaryTree([1, null, 2]), 2],
   [createBinaryTree([1]), 1],
@@ -17,6 +18,7 @@ test.each([
 
 test.each([
   [createBinaryTree([3, 9, 20, null, null, 15, 7]), 3],
+  [createBinaryTree([0, 2, 4, 1, null, 3, -1, 5, 1, null, 6, null, 8]), 4],
   [createBinaryTree([3, 9, 20]), 2],
   [createBinaryTree([1, null, 2]), 2],
   [createBinaryTree([1]), 1],
@@ -27,6 +29,7 @@ test.each([
 
 test.each([
   [createBinaryTree([3, 9, 20, null, null, 15, 7]), 3],
+  [createBinaryTree([0, 2, 4, 1, null, 3, -1, 5, 1, null, 6, null, 8]), 4],
   [createBinaryTree([3, 9, 20]), 2],
   [createBinaryTree([1, null, 2]), 2],
   [createBinaryTree([1]), 1],
