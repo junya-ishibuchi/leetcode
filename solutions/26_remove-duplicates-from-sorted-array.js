@@ -16,15 +16,15 @@ var removeDuplicates = function (nums) {
     return 1;
   }
 
-  let k = 1;
+  let uniqueNumIdx = 1;
   for (let i = 1; i < nums.length; i++) {
-    if (nums[i] !== nums[k - 1]) {
-      nums[k] = nums[i];
-      k++;
+    if (nums[i] !== nums[uniqueNumIdx - 1]) {
+      nums[uniqueNumIdx] = nums[i];
+      uniqueNumIdx++;
     }
   }
 
-  return k;
+  return uniqueNumIdx;
 };
 // @lc code=end
 
