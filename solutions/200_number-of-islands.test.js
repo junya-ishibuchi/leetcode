@@ -1,4 +1,5 @@
 import { numIslands_bfs } from "./200_number-of-islands_bfs";
+import { numIslands_dfs } from "./200_number-of-islands_dfs";
 
 test.each([
   [
@@ -31,4 +32,37 @@ test.each([
   ],
 ])("test bfs", (array, output) => {
   expect(numIslands_bfs(array)).toBe(output);
+});
+
+test.each([
+  [
+    [
+      ["1", "1", "1", "1", "0"],
+      ["1", "1", "0", "1", "0"],
+      ["1", "1", "0", "0", "0"],
+      ["0", "0", "0", "0", "0"],
+    ],
+    1,
+  ],
+  [
+    [
+      ["1", "1", "0", "0", "0"],
+      ["1", "1", "0", "0", "0"],
+      ["0", "0", "1", "0", "0"],
+      ["0", "0", "0", "1", "1"],
+    ],
+    3,
+  ],
+  [[["1"]], 1],
+  [[["0"]], 0],
+  [
+    [
+      ["1", "1", "1"],
+      ["0", "1", "0"],
+      ["1", "1", "1"],
+    ],
+    1,
+  ],
+])("test dfs", (array, output) => {
+  expect(numIslands_dfs(array)).toBe(output);
 });
