@@ -3,7 +3,7 @@
  *
  * [238] Product of Array Except Self
  * Time Complexity: O(n) where n is the number of nums
- * Space Complexity: O(n)
+ * Space Complexity: O(1)
  */
 
 // @lc code=start
@@ -12,34 +12,21 @@
  * @return {number[]}
  */
 var productExceptSelf = function (nums) {
-  const prefix = generatePrefixProduct(nums);
-  const postfix = generatePostfixProduct(nums);
-
   const results = [];
+  let prefix = 1;
+  let postfix = 1;
+
   for (let i = 0; i < nums.length; i++) {
-    results[i] = (prefix[i - 1] ?? 1) * (postfix[i + 1] ?? 1);
+    results[i] = prefix;
+    prefix *= nums[i];
+  }
+  for (let i = nums.length - 1; i >= 0; i--) {
+    results[i] *= postfix;
+    postfix *= nums[i];
   }
 
   return results;
 };
-
-function generatePrefixProduct(nums) {
-  const products = [];
-  for (let i = 0; i < nums.length; i++) {
-    products[i] = (products[i - 1] ?? 1) * nums[i];
-  }
-
-  return products;
-}
-
-function generatePostfixProduct(nums) {
-  const products = [];
-  for (let i = nums.length - 1; i >= 0; i--) {
-    products[i] = (products[i + 1] ?? 1) * nums[i];
-  }
-
-  return products;
-}
 
 export { productExceptSelf };
 // @lc code=end
