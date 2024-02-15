@@ -3,10 +3,7 @@
  *
  * [191] Number of 1 Bits
  */
-/**
- * Time Complexity: O(1)
- * Space Complexity: O(1)
- */
+
 // @lc code=start
 /**
  * @param {number} n - a positive integer
@@ -14,11 +11,11 @@
  */
 var hammingWeight = function (n) {
   let count = 0;
-  for (let i = 1; i <= 32; i++) {
-    if ((n >>> i) & 1) {
-      count++;
-    }
+  while (n !== 0) {
+    n &= n - 1;
+    count++;
   }
+
   return count;
 };
 // @lc code=end
