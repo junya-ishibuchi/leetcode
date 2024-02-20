@@ -6,5 +6,6 @@ test.each([
   [[1], 1, [], 0, [1]],
   [[0], 0, [1], 1, [1]],
 ])("test", (nums1, m, nums2, n, output) => {
-  expect(merge(nums1, m, nums2, n)).toStrictEqual(output);
+  merge(nums1, m, nums2, n);
+  expect(nums1).toStrictEqual(output);
 });

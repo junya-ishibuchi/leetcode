@@ -5,17 +5,14 @@
  */
 /**
  * Time Complexity: O(m + n)
- * Space Complexity: O(m)
+ * Space Complexity: O(1)
  */
 
 /**
- * 1. create a queue to store numbers from nums1 up to m
- * 2. iterate over nums1
- * 3. create variables qidx and nums2idx
- * 4. compare the element of queue[qidx] with the element of nums2[nums2idx]
- * 5. if the element of queue[qidx] is greater than the element of nums2[nums2idx], store the number in nums1 of loop index
- * 6. increment nums2idx
- * 7. if not just, continue and increment qidx
+ * 1. iterate over nums1 from the end and store the loop index from the end
+ * 2. compare nums1[m - 1] with nums2[n - 1]
+ * 3. if nums1[m - 1] < nums2[n - 1], set nums1[loop index] to nums2[n - 1] and decrement n
+ * 4. if not, set nums1[loop index] to nums1[m - 1] and decrement m
  */
 
 // @lc code=start
@@ -27,22 +24,23 @@
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
 var merge = function (nums1, m, nums2, n) {
-  const queue = nums1.slice(0, m);
-
-  let qIdx = 0;
-  let nums2Idx = 0;
-
-  for (let i = 0; i < nums1.length; i++) {
-    if (qIdx >= m || (nums2Idx <= n && queue[qIdx] > nums2[nums2Idx])) {
-      nums1[i] = nums2[nums2Idx];
-      nums2Idx++;
+  let mergeIndex = m + n - 1;
+  while (m > 0 && n > 0) {
+    if (nums1[m - 1] > nums2[n - 1]) {
+      nums1[mergeIndex] = nums1[m - 1];
+      m--;
     } else {
-      nums1[i] = queue[qIdx];
-      qIdx++;
+      nums1[mergeIndex] = nums2[n - 1];
+      n--;
     }
+    mergeIndex--;
   }
 
-  return nums1;
+  while (n > 0) {
+    nums1[mergeIndex] = nums2[n - 1];
+    n--;
+    mergeIndex--;
+  }
 };
 // @lc code=end
 
